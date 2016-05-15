@@ -1,1 +1,3 @@
 alias j8='export JAVA_HOME=/home/tobias/apps/java8'
+alias j7='export JAVA_HOME=/home/tobias/apps/java7'
+alias j6='export JAVA_HOME=/home/tobias/apps/java6'
