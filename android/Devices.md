@@ -6,3 +6,6 @@
 - TWRP: http://forum.xda-developers.com/devdb/project/?id=11587#downloads (use version twrp-lux-3.0.2-r2.img)
 - ROM: http://forum.xda-developers.com/moto-x-play/development/rom-resurrection-remix-t3207521
 - GApps: flash directly after ROM
+
+# S3
+- ROM: http://forum.xda-developers.com/galaxy-s3/development/rom-ressurrection-remix-m-t3270121
