@@ -1,3 +1,9 @@
+# Contains global aliases usable for all sorts of projects
+
 alias j8='export JAVA_HOME=/home/tobias/apps/java8'
 alias j7='export JAVA_HOME=/home/tobias/apps/java7'
 alias j6='export JAVA_HOME=/home/tobias/apps/java6'
+
+alias swagger='firefox localhost:8888 ; docker run --rm -p 8888:8080 swaggerapi/swagger-editor'
+
+alias phone='flatpak run com.belledonnecommunications.linphone/x86_64/4.1.1'
