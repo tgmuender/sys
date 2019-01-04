@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd $(dirname $0);
-pathToAlias=$(pwd)"/.alias";
+readonly pathToAlias=$(pwd)"/.alias";
 include="source $pathToAlias"
 
 if grep -Fxq "$include" ~/.zshrc
