@@ -5,8 +5,9 @@ APP_ROOT="$HOME/apps"
 alias j11='export JAVA_HOME="$APP_ROOT/java11"'
 alias j8='export JAVA_HOME="$APP_ROOT/java8'
 alias j7='export JAVA_HOME="$APP_ROOT/java7'
-alias j6='export JAVA_HOME="$APP_ROOT/java6'
 
 alias swagger='firefox localhost:8888 ; docker run --rm -p 8888:8080 swaggerapi/swagger-editor'
 
 alias phone='flatpak run com.belledonnecommunications.linphone/x86_64/4.1.1'
+
+alias ll='ls -lFh'
