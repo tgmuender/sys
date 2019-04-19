@@ -1,0 +1,8 @@
+ousb() {
+    sudo cryptsetup open $1 usb-crypt --type luks2
+    sudo mount /dev/mapper/usb-crypt /mnt/usb-crypt
+}
+
+cusb() {
+    sudo cryptsetup close usb-crypt
+}
