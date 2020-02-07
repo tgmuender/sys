@@ -7,29 +7,41 @@ cusb() {
     sudo cryptsetup close usb-crypt
 }
 
+
+
 swagger-ui() {
     # see https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#docker for a list of
     # available configuration options (env variables)
 
-    local HOST_PORT=$1
-    local OPENAPI_FILE=$2
-    local BASEDIR=$(pwd)
-
-    if [ $# -ne 2 ]; then
-        echo "Please specify port and OpenAPI file name.."
+    if [ $# -ne 1 ]; then
+        echo "Please specify OpenAPI file name.."
         return 1
     fi
 
+    local OPENAPI_FILE=$1
+    local BASEDIR=$(pwd)
+
     echo "Serving ${OPENAPI_FILE} with swagger-ui on port ${HOST_PORT}..."
+
+    cidFile="$(mktemp)"
 
     docker run \
     --rm \
-    -p ${HOST_PORT}:8080 \
+    -P \
     -v ${BASEDIR}:/usr/share/nginx/html/app \
     -e DOC_EXPANSION=full \
     -e SWAGGER_JSON=/app/${OPENAPI_FILE} \
     -e URL=./app/${OPENAPI_FILE} \
+    --cidfile="${cidFile}.1" \
     swaggerapi/swagger-ui &
+
+    sleep 2
+    cid=$(cat "${cidFile}.1")
+    echo "Started container with id: ${cid}"
+
+    HOST_PORT=$(docker inspect \
+        --format='{{ (index (index .NetworkSettings.Ports "8080/tcp") 0).HostPort }}' \
+         ${cid} )
 
     sleep 2
     xdg-open "http://localhost:${HOST_PORT}"
