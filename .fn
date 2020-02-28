@@ -47,3 +47,7 @@ swagger-ui() {
     xdg-open "http://localhost:${HOST_PORT}"
     fg
 }
+
+function rsaKey() {
+    openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096
+}
