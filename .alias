@@ -2,6 +2,7 @@
 
 APP_ROOT="$HOME/apps"
 
+alias j13='export JAVA_HOME="$APP_ROOT/java13"'
 alias j11='export JAVA_HOME="$APP_ROOT/java11"'
 alias j8='export JAVA_HOME="$APP_ROOT/java8'
 alias j7='export JAVA_HOME="$APP_ROOT/java7'
@@ -14,3 +15,5 @@ alias ll='ls -lFh'
 
 alias mci='mvn clean install'
 alias gw='./gradlew'
+
+alias lens='kontena-lens'
