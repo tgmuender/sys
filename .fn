@@ -51,3 +51,16 @@ swagger-ui() {
 function rsaKey() {
     openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096
 }
+
+function mail-cert() {
+    # Pages text version of certificate through less to inspect validity and other attributes
+
+    if [ $# -ne 1 ]; then
+        echo "Please specify mail server together with port, e.g. mail.yourdomain.tld:587"
+        return 1
+    fi
+
+    local serverWithPort=$1
+
+    echo "QUIT" | openssl s_client -connect ${serverWithPort} -showcerts -starttls smtp | openssl x509 -text | less
+}
