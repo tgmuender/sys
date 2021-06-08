@@ -64,3 +64,25 @@ function mail-cert() {
 
     echo "QUIT" | openssl s_client -connect ${serverWithPort} -showcerts -starttls smtp | openssl x509 -text | less
 }
+
+function decodeJwt() {
+  # Utility to decode the parts of a Json Web Token
+
+  if [ $# -ne 1 ]; then
+    echo "Please provide token as 1st argument"
+    return 1
+  fi
+
+  local -r TOKEN="$1"
+  local -a TOKEN_PARTS=( $(echo -n "$TOKEN" | sed "s/\./\n/g") )
+
+  echo "TOKEN has ${#TOKEN_PARTS[@]} parts"
+
+  for tokenPart in "${TOKEN_PARTS[@]}"
+  do
+    echo "Encoded part is: ${tokenPart}"
+    decodedPart=$(openssl enc -base64 -d <<< ${tokenPart})
+    echo "Decoded part is: ${decodedPart}"
+    echo -e "\n"
+  done
+}
