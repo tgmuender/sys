@@ -17,3 +17,4 @@ alias mci='mvn clean install'
 alias gw='./gradlew'
 
 alias lens='kontena-lens'
+alias k='kubectl'
